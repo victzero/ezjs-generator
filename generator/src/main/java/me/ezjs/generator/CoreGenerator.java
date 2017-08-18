@@ -1,6 +1,5 @@
 package me.ezjs.generator;
 
-import me.ezjs.core.exception.AppException;
 import me.ezjs.generator.mybatis.api.MyBatisGenerator;
 import me.ezjs.generator.mybatis.config.*;
 import me.ezjs.generator.mybatis.config.xml.ConfigurationParser;
