@@ -1,0 +1,46 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.1.RELEASE'
+    }
+    repositories {
+//        maven {             url "http://maven.aliyun.com/nexus/content/groups/public/"         }
+        maven { url "http://maven.sf8cloud.com/repository/y-public/" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'ezjs-core'
+    version '1.0-SNAPSHOT'
+}
+
+
+// 全局配置，对所有工程有效
+allprojects {
+    group 'me.ezjs'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        maven { url "http://maven.sf8cloud.com/repository/y-public/" }
+    }
+
+    // 全局属性设置
+    ext {
+        junitVersion = "4.11"
+        // java文件编码方式设置为utf-8
+        compileJava.options.encoding = 'UTF-8'
+        compileTestJava.options.encoding = 'UTF-8'
+    }
+    dependencies {
+        runtime('mysql:mysql-connector-java:5.1.38')
+    }
+}
