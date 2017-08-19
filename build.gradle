@@ -14,15 +14,15 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'ezjs-core'
-    version '1.0-SNAPSHOT'
+    baseName = 'ezjs-generator'
+    version '1.0.0-SNAPSHOT'
 }
 
 
 // 全局配置，对所有工程有效
 allprojects {
     group 'me.ezjs'
-    version '1.0-SNAPSHOT'
+    version '1.0.0-SNAPSHOT'
 
     apply plugin: 'java'
 

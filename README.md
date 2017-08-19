@@ -7,7 +7,7 @@ generate code of model and mapper and provider and manager for eZjs-core framewo
 
 ## Getting started
 ```
-java -jar ezjs_generator-1.0-SNAPSHOT.jar -mysql.db ez_nfs_v1 -mysql.user root -mysql.pass root -target.module nfs -target.dir D:\build_jars -tables filemodel vodmodel
+java -jar generator-1.0.0-SNAPSHOT.jar -mysql.db ez_nfs_v1 -mysql.user root -mysql.pass root -target.module nfs -tables filemodel vodmodel
 ```
 
 参数说明:
