@@ -64,7 +64,9 @@ public class CoreGenerator {
         //target
         JavaModelGeneratorConfiguration javaModelGeneratorConfiguration = defaultContext.getJavaModelGeneratorConfiguration();
         javaModelGeneratorConfiguration.setTargetPackage(PKG_PREFIX + getParam(targetModule));
-        javaModelGeneratorConfiguration.setTargetProject(getParam(targetDir, getRunTimePath()));
+        String targetProject = getParam(targetDir, getRunTimePath());
+        System.out.println(targetProject);
+        javaModelGeneratorConfiguration.setTargetProject(targetProject);
 //defaultContext.setJavaModelGeneratorConfiguration(javaModelGeneratorConfiguration);
 
 
