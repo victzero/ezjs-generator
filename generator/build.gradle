@@ -2,16 +2,27 @@ group 'me.ezjs'
 version '1.0.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'idea'
+
+ext {
+    profile = System.getProperty("env") ?: "dev"
+    println "[current profile]:" + profile
+}
 
 dependencies {
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
     compile group: 'org.apache.ant', name: 'ant', version: '1.9.7'
-
-//    compile group: 'me.ezjs', name: 'ezjs-core', version: '1.0.0-RELEASE'
-
+    compile('mysql:mysql-connector-java:5.1.38')
     runtime('mysql:mysql-connector-java:5.1.38')
-
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/resources", "env/$profile"]
+        }
+    }
 }
 
 jar {
@@ -21,6 +32,25 @@ jar {
                 'Main-Class': 'me.ezjs.generator.CoreGenerator'
         )
     }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    into('assets') {
+        from 'assets'
+    }
+}
+
+//清除上次的编译过的文件
+task clearPj(type:Delete){
+    delete 'build','target'
+}
+
+task copyJar(type:Copy){
+    from configurations.runtime
+    into ('build/libs/lib')
+}
+
+task release(type: Copy,dependsOn: [build,copyJar]) {
+    //    from  'conf'
+    //   into ('build/libs/eachend/conf')
 }
 
 apply from: '../gradle/maven_push.gradle'

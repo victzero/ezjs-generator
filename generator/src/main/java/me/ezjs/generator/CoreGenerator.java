@@ -6,6 +6,7 @@ import me.ezjs.generator.mybatis.config.xml.ConfigurationParser;
 import me.ezjs.generator.mybatis.exception.InvalidConfigurationException;
 import me.ezjs.generator.mybatis.exception.XMLParserException;
 import me.ezjs.generator.mybatis.internal.DefaultShellCallback;
+import org.apache.log4j.BasicConfigurator;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class CoreGenerator {
     private static Map<String, List<String>> cmdParams;
 
     public static void main(String[] args) throws IOException, XMLParserException, InvalidConfigurationException, SQLException, InterruptedException {
+        BasicConfigurator.configure();
 
         parseCmdArgs(args);
 
