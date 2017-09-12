@@ -1,5 +1,6 @@
 # eZjs-generator
 generate code of model and mapper and provider and manager for eZjs-core framework
+针对ezjs（https://github.com/victzero/ezjs）框架提供的逆向生成工具，自动生成Model层、DAO层（Mapper+Provider)、manager层。基于MyBatis Generator代码进行的插件开发。
 
 ## Downloading
 
